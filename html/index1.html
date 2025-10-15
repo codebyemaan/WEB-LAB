@@ -1,0 +1,58 @@
+<!DOCTYPE html>    <!--LAB 1-->
+<html>   <!--root element-->
+<head>   <!--meta information-->
+<title>menu</title>
+</head>
+<style>form {
+  text-align: center; /* Centers inline content within the form */
+  width: 50%;
+  margin: 0 auto;
+  padding: 20px;
+  border-style:inset;
+}
+body{
+background-image: url('images/1.jpg'); background-size: cover; text-align: center;color: #cc0099;
+}
+</style>
+ 
+<body>   <!--visible content--><form>
+<h1>log-in Page</h1>
+<form>
+<label for = "Name">Name:</label>
+<input type="text" name="username" placeholder="enter your name">
+<br>
+<br>
+<label for = "Password">Password:</label>
+<input type="password" id="password" placeholder="required" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must be at least 8 characters long and include one uppercase letter, one lowercase letter, and one number.">
+<br>
+<br>
+<label for = "Email">Email:</label>
+<input type="email" name="Useremail" placeholder ="required">
+<br>
+<br>
+<label for = "Number">Number:</label>
+<input type="number" id ="number" pattern>
+<br>
+<br>
+<label for = "Date">Date:</label>
+<input type="date" id="date" required>
+<br>
+<br>
+<label for = "Checkbox">Checkbox:</label>
+<input type="checkbox" disabled><br>
+<label for = "Radio">Radio:</label>
+<input type="radio" readonly><br>
+<label for = "Reset">Reset:</label>
+<input type="reset"><br>
+<label for = "Code">Code:</label>
+<input type="code"><br>
+<label for = "Range">Range:</label>
+<input type="range"><br>
+
+
+<button type="submit">submit</button>
+</form>
+
+</body>
+ 
+</html>
