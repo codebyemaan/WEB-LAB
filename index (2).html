@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Personal Webpage</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f9fc;
+      color: white;
+    }
+
+    header, nav, main, footer {
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: rgb(96, 140, 251);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* ---------- Header ---------- */
+    header {
+      text-align: center;
+      background-color: #e3f2fd;
+      color: #0d47a1;
+    }
+
+    header h1 {
+      margin-bottom: 10px;
+    }
+
+    /* ---------- Navigation Bar ---------- */
+    nav {
+      background-color: #1565c0;
+      color:white (4, 5, 5);
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav li {
+      display: inline-block;
+      margin: 0 15px;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* ---------- Main Section ---------- */
+    main {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+    }
+
+    article, aside {
+      background-color: #93b0f9;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    article h2 {
+      color: #edeeef;
+    }
+
+    aside {
+      background-color: #93b0f9;
+    }
+
+    /* ---------- Image Styling ---------- */
+    img {
+      display: block;
+      margin: 10px auto;
+      border-radius: 8px;
+      border: 2px solid #ddd;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      background-color: #e3f2fd;
+      color: #0d47a1;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Welcome to My Personal Webpage</h1>
+    <p>Hello! I’m Eman Saifullah, a passionate learner exploring web development.</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="lab.html">Home</a></li>
+      <li><a href="#hobbies">Hobbies</a></li>
+      <li><a href="index.html">Formm</a></li>
+      <li><a href="https://www.w3schools.com" target="_blank">Learn HTML</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <article id="about">
+      <h2>About Me</h2>
+      <p>I am a student learning programming and web design. I love building creative and user-friendly websites.</p>
+      <img src="images/1.jpg" alt="A photo of me" width="200">
+    </article>
+
+    <aside>
+      <h3>Quick Info</h3>
+      <ul>
+        <li>Linkedin</li>
+        <li>GitHub</li>
+      </ul>
+    </aside>
+
+    <article id="hobbies">
+      <h2>My Hobbies</h2>
+      <ul>
+        <li>Reading tech blogs</li>
+        <li>Designing webpages</li>
+        <li>Cooking and photography</li>
+      </ul>
+    </article>
+
+    <article id="contact">
+      <h2>Contact Me</h2>
+      <p>Email: <a href="mailto:emansaifullah84@example.com">emansaifullah84@gmail.com</a></p>
+    </article>
+  </main>
+
+  <footer>
+    <p> Eman Saifullah | Built with using HTML</p>
+  </footer>
+</body>
+</html>
