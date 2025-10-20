@@ -2,155 +2,242 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Personal Webpage</title>
-
+  <title>Eman's Portfolio</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
+    * {
       margin: 0;
       padding: 0;
-      background-color: #f7f9fc;
-      color: white;
+      box-sizing: border-box;
     }
 
-    header, nav, main, footer {
-      margin: 20px;
-      padding: 20px;
-      border-radius: 10px;
-      background-color: rgb(96, 140, 251);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    body {
+      font-family: "Poppins", "Inter", sans-serif;
+      background: linear-gradient(180deg, #e6e0f8 0%, #f8f7fb 100%); /* lavender gradient */
+      color: #333;
+      line-height: 1.8;
+      padding: 30px;
     }
 
-    /* ---------- Header ---------- */
+    a {
+      text-decoration: none;
+      color: #5a189a;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #7b2cbf;
+    }
     header {
       text-align: center;
-      background-color: #e3f2fd;
-      color: #0d47a1;
+      padding: 70px 20px 40px;
+      background: linear-gradient(135deg, #b9a8f7, #f2e9e4);
+      border-radius: 20px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      margin-bottom: 50px;
+      color: #2d0c57;
     }
 
     header h1 {
+      font-size: 2.6em;
+      letter-spacing: 1px;
       margin-bottom: 10px;
+      color: #240046;
     }
 
-    /* ---------- Navigation Bar ---------- */
+    header p {
+      color: #3c096c;
+      font-size: 1.1em;
+      max-width: 700px;
+      margin: 10px auto;
+    }
     nav {
-      background-color: #1565c0;
-      color:white (4, 5, 5);
       text-align: center;
+      margin-top: 25px;
     }
 
     nav ul {
       list-style: none;
-      padding: 0;
-      margin: 0;
     }
 
     nav li {
       display: inline-block;
-      margin: 0 15px;
-      color: white;
+      margin: 0 18px;
     }
 
     nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      
+      font-weight: 500;
+      color: #240046;
+      position: relative;
+      padding: 5px 0;
     }
 
-    nav a:hover {
-      text-decoration: underline;
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #7b2cbf;
+      transition: width 0.3s;
     }
 
-    /* ---------- Main Section ---------- */
+    nav a:hover::after {
+      width: 100%;
+    }
     main {
       display: grid;
       grid-template-columns: 2fr 1fr;
-      gap: 20px;
+      gap: 30px;
     }
 
     article, aside {
-      background-color: #93b0f9;
-      padding: 15px;
-      border-radius: 10px;
+      background-color: #ffffff;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.07);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    article h2 {
-      color: #edeeef;
+    article:hover, aside:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
 
-    aside {
-      background-color: #93b0f9;
+    article h2, aside h3 {
+      color: #4c0082;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #e4d9ff;
+      padding-bottom: 5px;
+      letter-spacing: 0.5px;
     }
 
-    /* ---------- Image Styling ---------- */
+    p, li {
+      color: #444;
+      font-size: 0.98em;
+    }
+
+    aside h3 {
+      text-align: center;
+      color: #5a189a;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .skill {
+      background-color: #ede4ff;
+      color: #3c096c;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      font-weight: 500;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .skill:hover {
+      background-color: #d6b8ff;
+      transform: scale(1.05);
+    }
     img {
       display: block;
-      margin: 10px auto;
-      border-radius: 8px;
-      border: 2px solid #ddd;
+      margin: 20px auto;
+      width: 230px;
+      border-radius: 18px;
+      border: 2px solid #dcd6f7;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+  
+    #contact a {
+      color: #7b2cbf;
+      font-weight: 600;
     }
 
-    /* ---------- Footer ---------- */
+    #contact a:hover {
+      text-decoration: underline;
+    }
+
     footer {
       text-align: center;
-      font-size: 0.9em;
-      background-color: #e3f2fd;
-      color: #0d47a1;
-      margin-top: 30px;
+      margin-top: 60px;
+      padding: 25px;
+      font-size: 0.95em;
+      color: #3c096c;
+      background-color: #ede4ff;
+      border-radius: 18px;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.08);
     }
+
+    footer p {
+      margin: 5px 0;
+      letter-spacing: 0.5px;
+    }
+
   </style>
 </head>
 
 <body>
   <header>
-    <h1>Welcome to My Personal Webpage</h1>
-    <p>Hello! I’m Eman Saifullah, a passionate learner exploring web development.</p>
+    <h1>Eman Saifullah</h1>
+    <p>Learning to build creative and responsive websites</p>
+    
+    <nav>
+      <ul>
+        <li><a href="lab.html">Home</a></li>
+        <li><a href="#hobbies">Hobbies</a></li>
+        <li><a href="index1.html">Form</a></li>
+        <li><a href="https://www.w3schools.com" target="_blank">Learn HTML</a></li>
+      </ul>
+    </nav>
   </header>
-
-  <nav>
-    <ul>
-      <li><a href="lab.html">Home</a></li>
-      <li><a href="#hobbies">Hobbies</a></li>
-      <li><a href="index.html">Formm</a></li>
-      <li><a href="https://www.w3schools.com" target="_blank">Learn HTML</a></li>
-    </ul>
-  </nav>
 
   <main>
     <article id="about">
       <h2>About Me</h2>
-      <p>I am a student learning programming and web design. I love building creative and user-friendly websites.</p>
-      <img src="images/1.jpg" alt="A photo of me" width="200">
+      <p>I'm a web development student who loves combining creativity with logic to design creative and user-centered websites.  
+      My passion is crafting layouts that feel light, fun, and visually soothing.</p>
+      <img src="images/1.jpg" alt="Eman Saifullah">
     </article>
 
     <aside>
-      <h3>Quick Info</h3>
-      <ul>
-        <li>Linkedin</li>
-        <li>GitHub</li>
-      </ul>
+      <h3>Skills & Tools</h3>
+      <div class="skills">
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">SQL</div>
+        <div class="skill">Python</div>
+        <div class="skill">Git & GitHub</div>
+        <div class="skill">C++</div>
+      </div>
     </aside>
 
     <article id="hobbies">
       <h2>My Hobbies</h2>
       <ul>
-        <li>Reading tech blogs</li>
-        <li>Designing webpages</li>
-        <li>Cooking and photography</li>
+        <li>Exploring modern web design trends</li>
+        <li>Reading Novels</li>
+        <li>cooking</li>
       </ul>
     </article>
 
     <article id="contact">
       <h2>Contact Me</h2>
-      <p>Email: <a href="mailto:emansaifullah84@example.com">emansaifullah84@gmail.com</a></p>
+      <p>Email: <a href="mailto:emansaifullah84@gmail.com">emansaifullah84@gmail.com</a></p>
+     <p>GitHub: <a href="https://github.com/webdesign4everone"  target="_blank">View Repos</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/eman-saifullah-5158872a1/" target="_blank">Visit Profile</a></p>
+
     </article>
   </main>
 
   <footer>
-    <p> Eman Saifullah | Built with using HTML</p>
+    <p>2025 | Eman Saifullah</p>
   </footer>
 </body>
 </html>
+
+
