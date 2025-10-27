@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 4: Feedback Form & Multimedia</title>
+  <style>
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #f8f9fa;
+      color: #333;
+      margin: 40px;
+      line-height: 1.6;
+    }
+
+    h1, h2 {
+      color: #4a4e69;
+      text-align: center;
+    }
+
+    form {
+      background: #ffffff;
+      padding: 20px 40px;
+      max-width: 600px;
+      margin: 0 auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 6px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    input[type="submit"] {
+      background-color: #4a4e69;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #6d6875;
+    }
+
+    .media-section, .canvas-section {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    canvas {
+      border: 1px solid #000;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Feedback Form</h1>
+
+  <form action="#" method="post">
+    
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required placeholder="Enter your name">
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required placeholder="Enter your email">
+
+    <label>Gender:</label><br>
+    <input type="radio" id="male" name="gender" value="male">
+    <label for="male">Male</label>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">Female</label>
+    <br><br>
+
+    <label>Interests:</label><br>
+    <input type="checkbox" id="coding" name="interest" value="coding">
+    <label for="coding">Coding</label>
+    <input type="checkbox" id="design" name="interest" value="design">
+    <label for="design">Design</label>
+    <br><br>
+
+    <label for="experience">Experience Level:</label>
+    <select id="experience" name="experience">
+      <option value="">Select</option>
+      <option value="beginner">Beginner</option>
+      <option value="intermediate">Intermediate</option>
+      <option value="advanced">Advanced</option>
+    </select>
+
+    <label for="comments">Comments:</label>
+    <textarea id="comments" name="comments" rows="4" placeholder="Your feedback..."></textarea>
+
+    <input type="submit" value="Submit">
+  </form>
+
+  <div class="media-section">
+    <h2>Multimedia Demo</h2>
+    <audio controls>
+      <source src="sample-audio.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio><br><br>
+
+    <video width="320" height="240" controls>
+      <source src="sample-video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  
+  <div class="canvas-section">
+    <h2>Canvas Demo</h2>
+    <canvas id="myCanvas" width="200" height="100"></canvas>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#FF0000";
+    ctx.fillRect(20, 20, 150, 50); // Draw a red rectangle
+  </script>
+
+</body>
+</html>
