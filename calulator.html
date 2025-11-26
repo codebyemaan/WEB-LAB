@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+    <style>
+        /* ======= RESET ======= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ======= BACKGROUND ======= */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #2b5876, #4e4376);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ======= CALCULATOR BOX ======= */
+        .calculator {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        /* ======= DISPLAY ======= */
+        .display {
+            width: 260px;
+            height: 90px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            backdrop-filter: blur(5px);
+            box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .expression {
+            text-align: left;
+            font-size: 18px;
+            color: #f0e9ff;
+        }
+
+        .result {
+            text-align: right;
+            font-size: 26px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        /* ======= BUTTONS ======= */
+        button {
+            width: 60px;
+            height: 60px;
+            margin: 6px;
+            font-size: 20px;
+            border: none;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        button:hover {
+            background: rgba(255, 255, 255, 0.35);
+            transform: translateY(-3px);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        /* Special Buttons */
+        .operator {
+            background: rgba(255, 180, 60, 0.7);
+        }
+
+        .operator:hover {
+            background: rgba(255, 180, 60, 0.85);
+        }
+
+        .equal {
+            background: rgba(80, 200, 120, 0.8);
+        }
+
+        .equal:hover {
+            background: rgba(80, 200, 120, 1);
+        }
+
+        .clear {
+            background: rgba(255, 70, 70, 0.8);
+        }
+
+        .clear:hover {
+            background: rgba(255, 70, 70, 1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calculator">
+        <div class="display">
+            <div id="expression" class="expression"></div>
+            <div id="result" class="result"></div>
+        </div>
+
+        <!-- Row 1 -->
+        <button onclick="append('7')">7</button>
+        <button onclick="append('8')">8</button>
+        <button onclick="append('9')">9</button>
+        <button class="clear" onclick="clearDisplay()">C</button>
+
+        <br>
+
+        <!-- Row 2 -->
+        <button onclick="append('4')">4</button>
+        <button onclick="append('5')">5</button>
+        <button onclick="append('6')">6</button>
+        <button class="operator" onclick="append('*')">*</button>
+
+        <br>
+
+        <!-- Row 3 -->
+        <button onclick="append('1')">1</button>
+        <button onclick="append('2')">2</button>
+        <button onclick="append('3')">3</button>
+        <button class="operator" onclick="append('+')">+</button>
+
+        <br>
+
+        <!-- Row 4 -->
+        <button class="equal" onclick="calculate()">=</button>
+        <button onclick="append('0')">0</button>
+        <button class="operator" onclick="append('-')">-</button>
+        <button class="operator" onclick="append('/')">/</button>
+    </div>
+
+    <script>
+        let expressionBox = document.getElementById('expression');
+        let resultBox = document.getElementById('result');
+        let expression = '';
+
+        function append(value) {
+            expression += value;
+            expressionBox.textContent = expression;
+        }
+
+        function calculate() {
+            let result = eval(expression);
+            resultBox.textContent = result;
+            expression = result.toString();
+        }
+
+        function clearDisplay() {
+            expression = '';
+            expressionBox.textContent = '';
+            resultBox.textContent = '';
+        }
+    </script>
+
+</body>
+</html>
+
