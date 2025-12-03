@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lab 10 </title>
+
+  <style>
+    :root {
+      --lilac: #c8b5ff;
+      --deep-lilac: #a28af7;
+      --blush: #f7c6d9;
+      --white: #ffffff;
+      --text: #4a4a4a;
+      --bg: #f9f5ff;
+    }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      padding: 20px;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--deep-lilac);
+      margin-bottom: 25px;
+      font-size: 28px;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+
+    input, select {
+      padding: 10px 15px;
+      border: 2px solid var(--lilac);
+      border-radius: 8px;
+      font-size: 15px;
+      background: var(--white);
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--deep-lilac);
+      box-shadow: 0 0 8px var(--lilac);
+    }
+
+    #product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--white);
+      padding: 18px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      border: 2px solid var(--blush);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+      border-color: var(--deep-lilac);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      color: var(--deep-lilac);
+      font-size: 20px;
+    }
+
+    .card p {
+      margin: 5px 0;
+      color: #555;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Product 🌸</h1>
+
+  <div class="controls">
+    <input type="text" id="search" placeholder="Search product..." />
+    <select id="sort">
+      <option value="">Sort By</option>
+      <option value="low">Price: Low → High</option>
+      <option value="high">Price: High → Low</option>
+    </select>
+  </div>
+
+  <div id="product-list"></div>
+
+  <script>
+    // Embedded JSON
+    const jsonData = [
+      { id: 1, name: "Laptop", price: 1200, category: "Electronics" },
+      { id: 2, name: "Keyboard", price: 80, category: "Electronics" },
+      { id: 3, name: "Shoes", price: 50, category: "Fashion" },
+      { id: 4, name: "Backpack", price: 40, category: "Fashion" },
+      { id: 5, name: "Water Bottle", price: 15, category: "Accessories" }
+    ];
+
+    let products = [];
+
+    const productList = document.getElementById("product-list");
+    const searchInput = document.getElementById("search");
+    const sortSelect = document.getElementById("sort");
+
+    // Fake fetch (simulated delay)
+    const fetchProducts = async () => {
+      return new Promise(resolve => {
+        setTimeout(() => resolve(jsonData), 200);
+      });
+    };
+
+    const renderProducts = (items) => {
+      productList.innerHTML = items
+        .map(({ name, price, category }) => `
+          <div class="card">
+            <h3>${name}</h3>
+            <p><b>Price:</b> $${price}</p>
+            <p><b>Category:</b> ${category}</p>
+          </div>
+        `)
+        .join("");
+    };
+
+    // Search feature
+    searchInput.addEventListener("input", () => {
+      const keyword = searchInput.value.toLowerCase();
+      const filtered = products.filter(({ name }) =>
+        name.toLowerCase().includes(keyword)
+      );
+      renderProducts(filtered);
+    });
+
+    // Sorting feature
+    sortSelect.addEventListener("change", () => {
+      const type = sortSelect.value;
+      let sorted = [...products];
+
+      if (type === "low") sorted.sort((a, b) => a.price - b.price);
+      else if (type === "high") sorted.sort((a, b) => b.price - a.price);
+
+      renderProducts(sorted);
+    });
+
+    // Initialize App
+    (async () => {
+      products = await fetchProducts();
+      renderProducts(products);
+    })();
+  </script>
+
+</body>
+</html>
+

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lab 11 – Canvas & SVG Interactive Graphics</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #faf5ff;
+    padding: 20px;
+    text-align: center;
+    color: #4a4a4a;
+  }
+
+  h1 {
+    color: #8b70ff;
+    margin-bottom: 20px;
+  }
+
+  .canvas-box {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    display: inline-block;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-bottom: 25px;
+  }
+
+  #myCanvas {
+    border: 3px solid #d5baff;
+    border-radius: 10px;
+    cursor: crosshair;
+  }
+
+  button {
+    padding: 10px 18px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #c3a4ff;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  button:hover {
+    background: #a784ff;
+  }
+
+  .svg-box {
+    margin-top: 40px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 15px;
+    display: inline-block;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+</style>
+
+</head>
+<body>
+
+<h1>Lab 11 — Canvas 🎨</h1>
+
+<!-- ---------------- Canvas Drawing App ---------------- -->
+<div class="canvas-box">
+  <h2>Canvas Drawing App</h2>
+
+  <canvas id="myCanvas" width="600" height="350"></canvas><br>
+
+  <button onclick="clearCanvas()">Clear Canvas</button>
+  <button onclick="saveImage()">Save as Image</button>
+</div>
+
+<!-- ---------------- SVG Animation ---------------- -->
+<div class="svg-box">
+  <h2>SVG Animation Example</h2>
+
+  <svg width="300" height="150">
+    <circle cx="20" cy="75" r="20" fill="#a784ff">
+      <animate attributeName="cx" from="20" to="280" dur="3s" repeatCount="indefinite" />
+    </circle>
+  </svg>
+
+  <p>(Circle animates left → right repeatedly)</p>
+</div>
+
+
+<script>
+/* -------------------------
+     CANVAS SMOOTH PEN
+-------------------------- */
+
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+
+let drawing = false;
+let lastX = 0;
+let lastY = 0;
+
+ctx.lineWidth = 4;          // Brush thickness
+ctx.lineCap = "round";      // Rounded stroke ends
+ctx.lineJoin = "round";     // Smooth corners
+ctx.strokeStyle = "#8b70ff"; // Brush color (lilac)
+
+canvas.addEventListener("mousedown", (e) => {
+  drawing = true;
+  lastX = e.offsetX;
+  lastY = e.offsetY;
+});
+
+canvas.addEventListener("mouseup", () => drawing = false);
+canvas.addEventListener("mouseleave", () => drawing = false);
+
+canvas.addEventListener("mousemove", drawLine);
+
+function drawLine(e) {
+  if (!drawing) return;
+
+  ctx.beginPath();
+  ctx.moveTo(lastX, lastY);       // Start position
+  ctx.lineTo(e.offsetX, e.offsetY); // End position
+  ctx.stroke();
+
+  lastX = e.offsetX;
+  lastY = e.offsetY;
+}
+
+/* -------------------------
+     CLEAR CANVAS
+-------------------------- */
+function clearCanvas() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+/* -------------------------
+     SAVE CANVAS AS IMAGE
+-------------------------- */
+function saveImage() {
+  const dataURL = canvas.toDataURL("image/png");
+  const link = document.createElement("a");
+  link.href = dataURL;
+  link.download = "drawing.png";
+  link.click();
+}
+</script>
+
+</body>
+</html>
+
